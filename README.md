@@ -43,8 +43,8 @@ with the node is done.
   ```
 
 ## Start from Configuration
-It is possible to start up your `Nodex.NodesWatcher` and connect to the nodes if you specify 
-in the config files:
+It is possible to start up your `Nodex.NodesWatcher`s and connect to the nodes if you specify 
+it in the config files:
 ```elixir
 config :nodex,
   nodes: %{

@@ -5,10 +5,10 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.18.1">
-    <title>Nodex.Utilities.Network – nodex v0.1.0</title>
+    <title>Nodex.NodesWatcher – nodex v0.1.0</title>
     <link rel="stylesheet" href="dist/app-c922dbe7ef.css" />
     
-    <script src="dist/sidebar_items-da80a9a457.js"></script>
+    <script src="dist/sidebar_items-9baaaeaca7.js"></script>
     
     
     
@@ -66,9 +66,9 @@
 
       <h1>
         <small class="visible-xs">nodex v0.1.0</small>
-        Nodex.Utilities.Network
+        Nodex.NodesWatcher
         
-          <a href="https://github.com/mendrugory/nodex/blob/v0.1.0/lib/nodex/utilities/network.ex#L1" title="View Source" class="view-source" rel="help">
+          <a href="https://github.com/mendrugory/nodex/blob/v0.1.0/lib/nodex/nodes_watcher.ex#L1" title="View Source" class="view-source" rel="help">
             <span class="icon-code" aria-hidden="true"></span>
             <span class="sr-only">View Source</span>
           </a>
@@ -77,7 +77,20 @@
 
       
         <section id="moduledoc">
-          <p>Utilities Module to help you when some network issues.</p>
+          <p><a href="Nodex.NodesWatcher.html#content"><code class="inline">Nodex.NodesWatcher</code></a> is the a <a href="https://hexdocs.pm/elixir/GenServer.html"><code class="inline">GenServer</code></a> which will be in charge of supervising 
+its connected nodes and try to reconnect if the node is down.</p>
+<p>By Default there is a default <a href="Nodex.NodesWatcher.html#content"><code class="inline">Nodex.NodesWatcher</code></a> but it is possible to start 
+different <a href="Nodex.NodesWatcher.html#content"><code class="inline">Nodex.NodesWatcher</code></a> in order to have better structure.</p>
+<pre><code class="elixir">iex&gt; Nodex.NodesWatcher.start_link(%Nodex.NodesWatcher{name: :my_nodes_watcher})</code></pre>
+<p>To connect to a node you have to:</p>
+<pre><code class="elixir">iex&gt; Nodex.connect(%Nodex.Node{app_name: :app, host_address: &quot;my.host&quot;}, node_watcher)
+# or Using the default nodes watcher
+iex&gt; Nodex.connect(%Nodex.Node{app_name: :app, host_address: &quot;my.host&quot;})</code></pre>
+<p>When you need to do execute anything in the remote code just after the connection:</p>
+<pre><code class="elixir">iex&gt; remote_procedure = fn(node_name) -&gt; my_function(node_name) end
+iex&gt; Nodex.connect(%Nodex.Node{app_name: :app, host_address: &quot;my.host&quot;, fun: remote_procedure})</code></pre>
+<p>A reconnection time can be specified in <a href="Nodex.Node.html"><code class="inline">Nodex.Node</code></a>: </p>
+<pre><code class="elixir">iex&gt; %Nodex.Node{app_name: :app, host_address: &quot;my.host&quot;, reconnection_time: 10_000}</code></pre>
 
         </section>
       
@@ -100,17 +113,18 @@
     </h2>
     <div class="summary-row">
   <div class="summary-signature">
-    <a href="#get_ip/2">get_ip(host_name, address_family \\ :inet)</a>
+    <a href="#connect/2">connect(node_arguments, nodes_watcher \\ :nodes_watcher_default)</a>
   </div>
+  
+    <div class="summary-synopsis"><p>It will use the given <a href="Nodex.NodesWatcher.html#content"><code class="inline">Nodex.NodesWatcher</code></a> in order handle the connection to the 
+  given <a href="Nodex.Node.html"><code class="inline">Nodex.Node</code></a></p>
+</div>
   
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#get_node_atom/3">get_node_atom(app_name, address, address_family \\ :inet)</a>
+    <a href="#start_link/1">start_link(nodes_watcher)</a>
   </div>
-  
-    <div class="summary-synopsis"><p>Given the name of the app</p>
-</div>
   
 </div>
 
@@ -133,19 +147,19 @@
             </a>
             Functions
           </h1>
-          <div class="detail" id="get_ip/2">
+          <div class="detail" id="connect/2">
   
   
-    <span id="get_ip/1"></span>
+    <span id="connect/1"></span>
   
   <div class="detail-header">
-    <a href="#get_ip/2" class="detail-link" title="Link to this function">
+    <a href="#connect/2" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">get_ip(host_name, address_family \\ :inet)</span>
+    <span class="signature">connect(node_arguments, nodes_watcher \\ :nodes_watcher_default)</span>
     
-      <a href="https://github.com/mendrugory/nodex/blob/v0.1.0/lib/nodex/utilities/network.ex#L36" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/mendrugory/nodex/blob/v0.1.0/lib/nodex/nodes_watcher.ex#L48" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -154,22 +168,22 @@
     
   </div>
   <section class="docstring">
-    
+    <p>  It will use the given <a href="Nodex.NodesWatcher.html#content"><code class="inline">Nodex.NodesWatcher</code></a> in order handle the connection to the 
+  given <a href="Nodex.Node.html"><code class="inline">Nodex.Node</code></a></p>
+
   </section>
 </div>
-<div class="detail" id="get_node_atom/3">
+<div class="detail" id="start_link/1">
   
-  
-    <span id="get_node_atom/2"></span>
   
   <div class="detail-header">
-    <a href="#get_node_atom/3" class="detail-link" title="Link to this function">
+    <a href="#start_link/1" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">get_node_atom(app_name, address, address_family \\ :inet)</span>
+    <span class="signature">start_link(nodes_watcher)</span>
     
-      <a href="https://github.com/mendrugory/nodex/blob/v0.1.0/lib/nodex/utilities/network.ex#L17" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/mendrugory/nodex/blob/v0.1.0/lib/nodex/nodes_watcher.ex#L39" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -178,8 +192,7 @@
     
   </div>
   <section class="docstring">
-    <p>Given the name of the app</p>
-
+    
   </section>
 </div>
 

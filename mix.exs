@@ -16,6 +16,7 @@ defmodule Nodex.Mixfile do
         main: "readme",
         source_ref: "v#{@version}",
         extras: ["README.md"],
+        output: "docs",
         source_url: "https://github.com/mendrugory/nodex",
       ],
     ]

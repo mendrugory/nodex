@@ -8,7 +8,7 @@
     <title>Nodex – nodex v0.1.0</title>
     <link rel="stylesheet" href="dist/app-c922dbe7ef.css" />
     
-    <script src="dist/sidebar_items-da80a9a457.js"></script>
+    <script src="dist/sidebar_items-9baaaeaca7.js"></script>
     
     
     
@@ -95,7 +95,7 @@ end</code></pre>
   Start a NodesWatcher
 </h2>
 
-<p>  Altough <a href="Nodex.html"><code class="inline">Nodex</code></a> could work with only one <a href="Nodex.NodesWatcher.html"><code class="inline">Nodex.NodesWatcher</code></a> (the default one is up and running after the app is initialized) and it would be enough for most of the distributed applications, some of them with a lot of connected nodes need a better structure. This improvement can be achieved groping the nodes in different <a href="Nodex.NodesWatcher.html"><code class="inline">Nodex.NodesWatcher</code></a></p>
+<p>  Altough <a href="Nodex.html"><code class="inline">Nodex</code></a> could work with only one <a href="Nodex.NodesWatcher.html"><code class="inline">Nodex.NodesWatcher</code></a> (the default one is up and running after the app is initialized) and it would be enough for most of the distributed applications, some of them with a lot of connected nodes need a better structure. This improvement can be achieved groping the nodes in different <a href="Nodex.NodesWatcher.html"><code class="inline">Nodex.NodesWatcher</code></a>s.</p>
 <pre><code class="elixir">  iex&gt; Nodex.start_nodes_watcher(:my_nodes_watcher)</code></pre>
 <h2 id="stop-a-nodeswatcher" class="section-heading">
   <a href="#stop-a-nodeswatcher" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
@@ -103,6 +103,30 @@ end</code></pre>
 </h2>
 
 <pre><code class="elixir">  iex&gt; Nodex.stop_nodes_watcher(:my_nodes_watcher)</code></pre>
+<h2 id="start-from-configuration" class="section-heading">
+  <a href="#start-from-configuration" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Start from Configuration
+</h2>
+
+<p>It is possible to start up your <a href="Nodex.NodesWatcher.html"><code class="inline">Nodex.NodesWatcher</code></a>s and connect to the nodes if you specify 
+it in the config files:</p>
+<pre><code class="elixir">config :nodex,
+  nodes: %{
+    nodes_watcher1: [
+      %{app_name: :my_app1,
+      host_address: &quot;www.example1.com&quot;,
+      fun: fn(node_name) -&gt; IO.puts &quot;Hola #{node_name}!!&quot; end
+      }
+    ],
+    nodes_watcher2: [
+      %{app_name: :my_app2,
+      host_address: &quot;www.example2.com&quot;,
+      fun: fn(node_name) -&gt; IO.puts &quot;Hello #{node_name}!!&quot; end,
+      reconnection_time: 2_000
+      }
+    ]                        
+  }</code></pre>
+<p><code class="inline">app_name</code> and <code class="inline">host_address</code> are mandatory.</p>
 <h2 id="test" class="section-heading">
   <a href="#test" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Test
@@ -113,9 +137,9 @@ end</code></pre>
 </li>
 </ul>
 <pre><code class="bash">  mix test</code></pre>
-<h2 id="test" class="section-heading">
-  <a href="#test" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  Test
+<h2 id="docs" class="section-heading">
+  <a href="#docs" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Docs
 </h2>
 
 <ul>
