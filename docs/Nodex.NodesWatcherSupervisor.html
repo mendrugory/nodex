@@ -98,17 +98,26 @@
     <a href="#start_child/1">start_child(arguments)</a>
   </div>
   
+    <div class="summary-synopsis"><p>It starts a new child (<a href="Nodex.NodesWatcher.html"><code class="inline">Nodex.NodesWatcher</code></a>)</p>
+</div>
+  
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#start_link/0">start_link()</a>
   </div>
   
+    <div class="summary-synopsis"><p>It starts the <a href="Nodex.NodesWatcherSupervisor.html#content"><code class="inline">Nodex.NodesWatcherSupervisor</code></a></p>
+</div>
+  
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#terminate_child/1">terminate_child(name)</a>
   </div>
+  
+    <div class="summary-synopsis"><p>It stops a child (<a href="Nodex.NodesWatcher.html"><code class="inline">Nodex.NodesWatcher</code></a>)</p>
+</div>
   
 </div>
 
@@ -141,7 +150,7 @@
     </a>
     <span class="signature">start_child(arguments)</span>
     
-      <a href="https://github.com/mendrugory/nodex/blob/v0.1.0/lib/nodex/nodes_watcher_supervisor.ex#L21" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/mendrugory/nodex/blob/v0.1.0/lib/nodex/nodes_watcher_supervisor.ex#L30" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -150,7 +159,10 @@
     
   </div>
   <section class="docstring">
-    
+    <p>It starts a new child (<a href="Nodex.NodesWatcher.html"><code class="inline">Nodex.NodesWatcher</code></a>). </p>
+<p><code class="inline">arguments</code> has to be a map where is mandatory the field name which will be used as 
+name for the process.</p>
+
   </section>
 </div>
 <div class="detail" id="start_link/0">
@@ -163,7 +175,7 @@
     </a>
     <span class="signature">start_link()</span>
     
-      <a href="https://github.com/mendrugory/nodex/blob/v0.1.0/lib/nodex/nodes_watcher_supervisor.ex#L9" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/mendrugory/nodex/blob/v0.1.0/lib/nodex/nodes_watcher_supervisor.ex#L13" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -172,7 +184,8 @@
     
   </div>
   <section class="docstring">
-    
+    <p>It starts the <a href="Nodex.NodesWatcherSupervisor.html#content"><code class="inline">Nodex.NodesWatcherSupervisor</code></a>.</p>
+
   </section>
 </div>
 <div class="detail" id="terminate_child/1">
@@ -185,7 +198,7 @@
     </a>
     <span class="signature">terminate_child(name)</span>
     
-      <a href="https://github.com/mendrugory/nodex/blob/v0.1.0/lib/nodex/nodes_watcher_supervisor.ex#L32" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/mendrugory/nodex/blob/v0.1.0/lib/nodex/nodes_watcher_supervisor.ex#L47" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -194,7 +207,9 @@
     
   </div>
   <section class="docstring">
-    
+    <p>It stops a child (<a href="Nodex.NodesWatcher.html"><code class="inline">Nodex.NodesWatcher</code></a>). </p>
+<p>The name of the process has to be specified as argument.</p>
+
   </section>
 </div>
 

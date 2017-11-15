@@ -5,9 +5,14 @@ defmodule Nodex.Utilities.Network do
   @address_familiy_inet6 :inet6
   @address_familiy_local :local
 
-  @doc "Given the name of the app"
+  @doc"""
+  It returns the name of the node as :atom given the name of the app, the address of the host
+  and the family address:
+  * :inet
+  * :inet6
+  * :local
+  """
   def get_node_atom(app_name, address, address_family \\ @address_familiy_inet)
-
 
   def get_node_atom(app_name, address, _address_family)
       when is_tuple(address) do
@@ -25,7 +30,12 @@ defmodule Nodex.Utilities.Network do
     end
   end
 
-
+  @doc"""
+  It returns ip address in string mode given a host address and a family address
+  * :inet
+  * :inet6
+  * :local
+  """
   def get_ip(host_name, address_family \\ @address_familiy_inet)
 
 

@@ -6,6 +6,10 @@ defmodule Nodex.NodesWatcherSupervisor do
   require Logger
 
   @wait_time_to_connect_default_nodes_watcher 200
+
+  @doc """
+  It starts the `Nodex.NodesWatcherSupervisor`.
+  """  
   def start_link() do
     Supervisor.start_link __MODULE__, [], name: __MODULE__
   end
@@ -17,12 +21,23 @@ defmodule Nodex.NodesWatcherSupervisor do
     supervise children, strategy: :simple_one_for_one
   end
 
-
+  @doc """
+  It starts a new child (`Nodex.NodesWatcher`). 
+  
+  `arguments` has to be a map where is mandatory the field name which will be used as 
+  name for the process.
+  """
   def start_child(arguments) do
     Logger.info "Starting NodesWatcher: #{inspect(arguments.name)} ..."
     Supervisor.start_child(__MODULE__, [struct(NodesWatcher, arguments)])
   end
 
+  @doc """
+  It stops a child (`Nodex.NodesWatcher`). 
+  
+  The name of the process has to be specified as argument.
+  """
+  def terminate_child(name)
 
   def terminate_child(name) when name == :nodes_watcher_default do
     Logger.error "The default NodesWatcher should not been shut down."
