@@ -30,9 +30,9 @@ with the node is done.
   ```elixir
   iex> Nodex.connect(%Nodex.Node{app_name: :app, host_address: "my.host"}, :my_nodes_watcher)
   ```
-  
+
 ## Start a NodesWatcher
-  Altough `Nodex` could work with only one `Nodex.NodesWatcher` (the default one is up and running after the app is initialized) and it would be enough for most of the distributed applications, some of them with a lot of connected nodes need a better structure. This improvement can be achieved groping the nodes in different `Nodex.NodesWatcher`
+  Altough `Nodex` could work with only one `Nodex.NodesWatcher` (the default one is up and running after the app is initialized) and it would be enough for most of the distributed applications, some of them with a lot of connected nodes need a better structure. This improvement can be achieved groping the nodes in different `Nodex.NodesWatcher`s.
   ```elixir
   iex> Nodex.start_nodes_watcher(:my_nodes_watcher)
   ```
@@ -42,16 +42,37 @@ with the node is done.
   iex> Nodex.stop_nodes_watcher(:my_nodes_watcher)
   ```
 
+## Start from Configuration
+It is possible to start up your `Nodex.NodesWatcher` and connect to the nodes if you specify 
+in the config files:
+```elixir
+config :nodex,
+  nodes: %{
+    nodes_watcher1: [
+      %{app_name: :my_app1,
+      host_address: "www.example1.com",
+      fun: fn(node_name) -> IO.puts "Hola #{node_name}!!" end
+      }
+    ],
+    nodes_watcher2: [
+      %{app_name: :my_app2,
+      host_address: "www.example2.com",
+      fun: fn(node_name) -> IO.puts "Hello #{node_name}!!" end,
+      reconnection_time: 2_000
+      }
+    ]                        
+  }
+```
+`app_name` and `host_address` are mandatory.
+
 ## Test
   * Run the tests.
   ```bash
   mix test
   ```
 
-## Test
+## Docs
   * Create documentation.
   ```bash
   mix docs
-  ```  
-  
-  
+  ```
