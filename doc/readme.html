@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.18.1">
+    <title>Nodex – nodex v0.1.0</title>
+    <link rel="stylesheet" href="dist/app-c922dbe7ef.css" />
+    
+    <script src="dist/sidebar_items-da80a9a457.js"></script>
+    
+    
+    
+    
+  </head>
+  <body data-type="extras">
+    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+
+<div class="main">
+<button class="sidebar-toggle">
+  <span class="icon-menu" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Sidebar</span>
+</button>
+<section class="sidebar">
+
+  
+  <a href="readme.html" class="sidebar-projectLink">
+    <div class="sidebar-projectDetails">
+      <h1 class="sidebar-projectName">
+        nodex
+      </h1>
+      <h2 class="sidebar-projectVersion">
+        v0.1.0
+      </h2>
+    </div>
+    
+  </a>
+
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <input name="q" type="text" id="search-list" class="search-input" placeholder="search" aria-label="Search" autocomplete="off" />
+  </form>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+    
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+    
+
+    
+
+    
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+<h1>Nodex</h1>
+<p><a href="Nodex.html"><code class="inline">Nodex</code></a> is a <strong>OTP Application</strong> which will take care of your connected nodes. It will
+connect to a given node, reconnect if the connection is lost and will help you with some
+some issues like ip resolution or launching custom functions just after the connection 
+with the node is done.</p>
+<h2 id="installation" class="section-heading">
+  <a href="#installation" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Installation
+</h2>
+
+<ul>
+<li><p>Add <code class="inline">nodex</code> to your list of dependencies in <code class="inline">mix.exs</code>:</p>
+<pre><code class="elixir">def deps do
+   [{:nodex, git: &quot;git: &quot;https://github.com/mendrugory/nodex.git&quot;}]
+end</code></pre>
+</li>
+</ul>
+<h1>Connection</h1>
+<pre><code class="elixir">  iex&gt; Nodex.connect(%Nodex.Node{app_name: :app, host_address: &quot;my.host&quot;})</code></pre>
+<p>  In <code class="inline">Nodex.Node</code> can be also specified the reconnection time and a function 
+  that will be executed just after the connection with the node is done. This function is very 
+  useful if you need to log or save some information in the local node or execute any function, like a registration, in the connected node. This function will receive the name of the connected node as argument.</p>
+<pre><code class="elixir">  iex&gt; remote_procedure = fn(node_name) -&gt; my_function(node_name) end
+  iex&gt; Nodex.connect(%Nodex.Node{app_name: :app, host_address: &quot;my.host&quot;, fun: remote_procedure, reconnection_time: 10_000})</code></pre>
+<p>  <a href="Nodex.NodesWatcher.html"><code class="inline">Nodex.NodesWatcher</code></a>s are the processes that deal with the connected nodes. If you don’t specify any, it will work with the default one.</p>
+<pre><code class="elixir">  iex&gt; Nodex.connect(%Nodex.Node{app_name: :app, host_address: &quot;my.host&quot;}, :my_nodes_watcher)</code></pre>
+<h2 id="start-a-nodeswatcher" class="section-heading">
+  <a href="#start-a-nodeswatcher" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Start a NodesWatcher
+</h2>
+
+<p>  Altough <a href="Nodex.html"><code class="inline">Nodex</code></a> could work with only one <a href="Nodex.NodesWatcher.html"><code class="inline">Nodex.NodesWatcher</code></a> (the default one is up and running after the app is initialized) and it would be enough for most of the distributed applications, some of them with a lot of connected nodes need a better structure. This improvement can be achieved groping the nodes in different <a href="Nodex.NodesWatcher.html"><code class="inline">Nodex.NodesWatcher</code></a></p>
+<pre><code class="elixir">  iex&gt; Nodex.start_nodes_watcher(:my_nodes_watcher)</code></pre>
+<h2 id="stop-a-nodeswatcher" class="section-heading">
+  <a href="#stop-a-nodeswatcher" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Stop a NodesWatcher
+</h2>
+
+<pre><code class="elixir">  iex&gt; Nodex.stop_nodes_watcher(:my_nodes_watcher)</code></pre>
+<h2 id="test" class="section-heading">
+  <a href="#test" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Test
+</h2>
+
+<ul>
+<li>Run the tests.
+</li>
+</ul>
+<pre><code class="bash">  mix test</code></pre>
+<h2 id="test" class="section-heading">
+  <a href="#test" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Test
+</h2>
+
+<ul>
+<li>Create documentation.
+</li>
+</ul>
+<pre><code class="bash">  mix docs</code></pre>
+
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" rel="help" target="_blank">ExDoc</a> (v0.18.1),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            </span>
+        </p>
+        <button class="night-mode-toggle"><span class="sr-only">Switch theme</span></button>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  <script src="dist/app-778c9ef903.js"></script>
+  
+  
+  
+  
+  </body>
+</html>
+

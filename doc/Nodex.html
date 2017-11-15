@@ -1,0 +1,265 @@
+    <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.18.1">
+    <title>Nodex – nodex v0.1.0</title>
+    <link rel="stylesheet" href="dist/app-c922dbe7ef.css" />
+    
+    <script src="dist/sidebar_items-da80a9a457.js"></script>
+    
+    
+    
+    
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+
+    <div class="main">
+<button class="sidebar-toggle">
+  <span class="icon-menu" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Sidebar</span>
+</button>
+<section class="sidebar">
+
+  
+  <a href="readme.html" class="sidebar-projectLink">
+    <div class="sidebar-projectDetails">
+      <h1 class="sidebar-projectName">
+        nodex
+      </h1>
+      <h2 class="sidebar-projectVersion">
+        v0.1.0
+      </h2>
+    </div>
+    
+  </a>
+
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <input name="q" type="text" id="search-list" class="search-input" placeholder="search" aria-label="Search" autocomplete="off" />
+  </form>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+    
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+    
+
+    
+
+    
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+      <h1>
+        <small class="visible-xs">nodex v0.1.0</small>
+        Nodex
+        
+          <a href="https://github.com/mendrugory/nodex/blob/v0.1.0/lib/nodex.ex#L1" title="View Source" class="view-source" rel="help">
+            <span class="icon-code" aria-hidden="true"></span>
+            <span class="sr-only">View Source</span>
+          </a>
+        
+      </h1>
+
+      
+        <section id="moduledoc">
+          <p><a href="Nodex.html#content"><code class="inline">Nodex</code></a> is a <strong>OTP Application</strong> which will take care of your connected nodes.</p>
+<p><a href="Nodex.html#content"><code class="inline">Nodex</code></a> can launch <a href="Nodex.NodesWatcher.html"><code class="inline">Nodex.NodesWatcher</code></a>s which will be the responsibles of taking care of 
+the connected nodes. By default there is a <a href="Nodex.NodesWatcher.html"><code class="inline">Nodex.NodesWatcher</code></a> already launched.</p>
+<p>start a <a href="Nodex.NodesWatcher.html"><code class="inline">Nodex.NodesWatcher</code></a></p>
+<pre><code class="elixir">iex&gt; Nodex.start_nodes_watcher(:my_nodes_watcher)</code></pre>
+<p>and stop it later:</p>
+<pre><code class="elixir">iex&gt; Nodex.stop_nodes_watcher(:my_nodes_watcher)</code></pre>
+<p>In order to connect to a node we only have to do the following:</p>
+<pre><code class="elixir">iex&gt; Nodex.connect(nodo, :my_nodes_watcher) #specific nodes_watcher
+iex&gt; Nodex.connect(nodo) #default nodes_watcher</code></pre>
+<p>A node is specified using <a href="Nodex.Node.html"><code class="inline">Nodex.Node</code></a> and the simplest example would be:</p>
+<pre><code class="elixir">iex&gt; Nodex.connect(%Nodex.Node{app_name: :app, host_address: &quot;my.host&quot;})</code></pre>
+
+        </section>
+      
+
+      
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+          
+
+          
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+    <div class="summary-row">
+  <div class="summary-signature">
+    <a href="#connect/2">connect(nodo, nodes_watcher \\ :nodes_watcher_default)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>It connects to a node using an active <a href="Nodex.NodesWatcher.html"><code class="inline">Nodex.NodesWatcher</code></a>. If no <a href="Nodex.NodesWatcher.html"><code class="inline">Nodex.NodesWatcher</code></a> is 
+given, it will used the default one.
+The node has to be specified using a <a href="Nodex.Node.html"><code class="inline">Nodex.Node</code></a></p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start_nodes_watcher/1">start_nodes_watcher(name)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>It starts a new <a href="Nodex.NodesWatcher.html"><code class="inline">Nodex.NodesWatcher</code></a>. The input has to be a term() because it will be used
+as name of the process</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stop_nodes_watcher/1">stop_nodes_watcher(name)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>It stops the <a href="Nodex.NodesWatcher.html"><code class="inline">Nodex.NodesWatcher</code></a> whose name is given</p>
+</div>
+  
+</div>
+
+  </div>
+
+
+          
+
+        </section>
+      
+
+      
+
+      
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Functions
+          </h1>
+          <div class="detail" id="connect/2">
+  
+  
+    <span id="connect/1"></span>
+  
+  <div class="detail-header">
+    <a href="#connect/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">connect(nodo, nodes_watcher \\ :nodes_watcher_default)</span>
+    
+      <a href="https://github.com/mendrugory/nodex/blob/v0.1.0/lib/nodex.ex#L49" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>It connects to a node using an active <a href="Nodex.NodesWatcher.html"><code class="inline">Nodex.NodesWatcher</code></a>. If no <a href="Nodex.NodesWatcher.html"><code class="inline">Nodex.NodesWatcher</code></a> is 
+given, it will used the default one.
+The node has to be specified using a <a href="Nodex.Node.html"><code class="inline">Nodex.Node</code></a>.</p>
+
+  </section>
+</div>
+<div class="detail" id="start_nodes_watcher/1">
+  
+  
+  <div class="detail-header">
+    <a href="#start_nodes_watcher/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">start_nodes_watcher(name)</span>
+    
+      <a href="https://github.com/mendrugory/nodex/blob/v0.1.0/lib/nodex.ex#L33" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>It starts a new <a href="Nodex.NodesWatcher.html"><code class="inline">Nodex.NodesWatcher</code></a>. The input has to be a term() because it will be used
+as name of the process.</p>
+
+  </section>
+</div>
+<div class="detail" id="stop_nodes_watcher/1">
+  
+  
+  <div class="detail-header">
+    <a href="#stop_nodes_watcher/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">stop_nodes_watcher(name)</span>
+    
+      <a href="https://github.com/mendrugory/nodex/blob/v0.1.0/lib/nodex.ex#L40" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>It stops the <a href="Nodex.NodesWatcher.html"><code class="inline">Nodex.NodesWatcher</code></a> whose name is given.</p>
+
+  </section>
+</div>
+
+        </section>
+      
+
+      
+          <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" rel="help" target="_blank">ExDoc</a> (v0.18.1),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            </span>
+        </p>
+        <button class="night-mode-toggle"><span class="sr-only">Switch theme</span></button>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  <script src="dist/app-778c9ef903.js"></script>
+  
+  
+  
+  
+  </body>
+</html>
+
