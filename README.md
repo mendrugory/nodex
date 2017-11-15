@@ -5,6 +5,8 @@ connect to a given node, reconnect if the connection is lost and will help you w
 some issues like ip resolution or launching custom functions just after the connection 
 with the node is done.
 
+Check the [Documentation](https://mendrugory.github.io/nodex).
+
 
 ## Installation
   * Add `nodex` to your list of dependencies in `mix.exs`:
