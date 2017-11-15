@@ -75,13 +75,10 @@ with the node is done.</p>
   Installation
 </h2>
 
-<ul>
-<li><p>Add <code class="inline">nodex</code> to your list of dependencies in <code class="inline">mix.exs</code>:</p>
-<pre><code class="elixir">def deps do
-   [{:nodex, git: &quot;git: &quot;https://github.com/mendrugory/nodex.git&quot;}]
-end</code></pre>
-</li>
-</ul>
+<p>  Add <code class="inline">nodex</code> to your list of dependencies in <code class="inline">mix.exs</code>:</p>
+<pre><code class="elixir">  def deps do
+     [{:nodex, git: &quot;git: &quot;https://github.com/mendrugory/nodex.git&quot;}]
+  end</code></pre>
 <h1>Connection</h1>
 <pre><code class="elixir">  iex&gt; Nodex.connect(%Nodex.Node{app_name: :app, host_address: &quot;my.host&quot;})</code></pre>
 <p>  In <code class="inline">Nodex.Node</code> can be also specified the reconnection time and a function 
