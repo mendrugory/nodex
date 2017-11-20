@@ -60,7 +60,7 @@ config :nodex,
     nodes_watcher2: [
       %{app_name: :my_app2,
       host_address: "www.example2.com",
-      fun_after_conn: {MyModule1, :my_fun_1},
+      fun_after_conn: {MyModule2, :my_fun_2},
       reconnection_time: 2_000
       }
     ]                        
