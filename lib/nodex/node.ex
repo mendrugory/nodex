@@ -17,7 +17,7 @@ defmodule Nodex.Node do
   defstruct [
               :app_name,
               :host_address,
-              {:reconnection_time, @reconnection_time},
               :fun,
+              {:reconnection_time, @reconnection_time},
             ]
 end
