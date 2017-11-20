@@ -4,12 +4,12 @@ defmodule Nodex.Node do
 
   ```elixir
   iex> remote_procedure = fn(node_name) -> my_function(node_name) end
-  iex> Nodex.connect(%Nodex.Node{app_name: :app, host_address: "my.host", fun: remote_procedure, reconnection_time: 10_000})
+  iex> Nodex.connect(%Nodex.Node{app_name: :app, host_address: "my.host", fun_after_conn: remote_procedure, reconnection_time: 10_000})
   ```
 
   If no `reconnection_time` time is specified (in millis) it will take the default value, 10 seconds.
 
-  `fun` is a function that will be executed just after the connection with the node is done.
+  `fun_after_conn` is a function that will be executed just after the connection with the node is done.
   It will receive an input, the name of the node.
   """
   @reconnection_time 10000
@@ -17,7 +17,7 @@ defmodule Nodex.Node do
   defstruct [
               :app_name,
               :host_address,
-              :fun,
+              :fun_after_conn,
               {:reconnection_time, @reconnection_time},
             ]
 end

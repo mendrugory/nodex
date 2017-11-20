@@ -109,7 +109,11 @@ defmodule Nodex.NodesWatcher do
           Process.send_after(nodes_watcher, {:connect, nodo}, nodo.reconnection_time)
         else
           Logger.info "Connected to #{node_name}."
-          if is_function(nodo.fun), do: nodo.fun.(node_name)
+          case Map.get(nodo, :fun_after_conn) do
+            {mod, func} -> apply(mod, func, [node_name])
+            f when is_function(f) -> f.(node_name)
+            _ -> :nothing
+          end
           send(nodes_watcher, {:register_node, {node_name, nodo}})
         end
 
