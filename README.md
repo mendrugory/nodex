@@ -25,6 +25,7 @@ Check the [Documentation](https://mendrugory.github.io/nodex).
   useful if you need to log or save some information in the local node or execute any function, like a registration, in the connected node. This function will receive the name of the connected node as argument.
   ```elixir
   iex> remote_procedure = fn(node_name) -> my_function(node_name) end
+  iex> remote_procedure2 = {MyModule, :my_func} # Or a tuple with the module and the function
   iex> Nodex.connect(%Nodex.Node{app_name: :app, host_address: "my.host", fun_after_conn: remote_procedure, reconnection_time: 10_000})
   ```
 
@@ -53,13 +54,13 @@ config :nodex,
     nodes_watcher1: [
       %{app_name: :my_app1,
       host_address: "www.example1.com",
-      fun_after_conn: fn(node_name) -> IO.puts "Hola #{node_name}!!" end
+      fun_after_conn: {MyModule1, :my_fun_1}
       }
     ],
     nodes_watcher2: [
       %{app_name: :my_app2,
       host_address: "www.example2.com",
-      fun_after_conn: fn(node_name) -> IO.puts "Hello #{node_name}!!" end,
+      fun_after_conn: {MyModule1, :my_fun_1},
       reconnection_time: 2_000
       }
     ]                        

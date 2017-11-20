@@ -9,7 +9,8 @@ defmodule Nodex.Node do
 
   If no `reconnection_time` time is specified (in millis) it will take the default value, 10 seconds.
 
-  `fun_after_conn` is a function that will be executed just after the connection with the node is done.
+  `fun_after_conn` is a function or a a tuple with the module and the function {MyModule, :my_func} 
+  that will be executed just after the connection with the node is done.
   It will receive an input, the name of the node.
   """
   @reconnection_time 10000
