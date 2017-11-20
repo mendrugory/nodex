@@ -85,7 +85,8 @@ with the node is done.</p>
   that will be executed just after the connection with the node is done. This function is very 
   useful if you need to log or save some information in the local node or execute any function, like a registration, in the connected node. This function will receive the name of the connected node as argument.</p>
 <pre><code class="elixir">  iex&gt; remote_procedure = fn(node_name) -&gt; my_function(node_name) end
-  iex&gt; Nodex.connect(%Nodex.Node{app_name: :app, host_address: &quot;my.host&quot;, fun: remote_procedure, reconnection_time: 10_000})</code></pre>
+  iex&gt; remote_procedure2 = {MyModule, :my_func} # Or a tuple with the module and the function
+  iex&gt; Nodex.connect(%Nodex.Node{app_name: :app, host_address: &quot;my.host&quot;, fun_after_conn: remote_procedure, reconnection_time: 10_000})</code></pre>
 <p>  <a href="Nodex.NodesWatcher.html"><code class="inline">Nodex.NodesWatcher</code></a>s are the processes that deal with the connected nodes. If you don’t specify any, it will work with the default one.</p>
 <pre><code class="elixir">  iex&gt; Nodex.connect(%Nodex.Node{app_name: :app, host_address: &quot;my.host&quot;}, :my_nodes_watcher)</code></pre>
 <h2 id="start-a-nodeswatcher" class="section-heading">
@@ -113,13 +114,13 @@ it in the config files:</p>
     nodes_watcher1: [
       %{app_name: :my_app1,
       host_address: &quot;www.example1.com&quot;,
-      fun: fn(node_name) -&gt; IO.puts &quot;Hola #{node_name}!!&quot; end
+      fun_after_conn: {MyModule1, :my_fun_1}
       }
     ],
     nodes_watcher2: [
       %{app_name: :my_app2,
       host_address: &quot;www.example2.com&quot;,
-      fun: fn(node_name) -&gt; IO.puts &quot;Hello #{node_name}!!&quot; end,
+      fun_after_conn: {MyModule2, :my_fun_2},
       reconnection_time: 2_000
       }
     ]                        

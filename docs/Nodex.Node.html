@@ -79,9 +79,10 @@
         <section id="moduledoc">
           <p>Module which will define a struct that will be used by <a href="Nodex.NodesWatcher.html"><code class="inline">Nodex.NodesWatcher</code></a></p>
 <pre><code class="elixir">iex&gt; remote_procedure = fn(node_name) -&gt; my_function(node_name) end
-iex&gt; Nodex.connect(%Nodex.Node{app_name: :app, host_address: &quot;my.host&quot;, fun: remote_procedure, reconnection_time: 10_000})</code></pre>
+iex&gt; Nodex.connect(%Nodex.Node{app_name: :app, host_address: &quot;my.host&quot;, fun_after_conn: remote_procedure, reconnection_time: 10_000})</code></pre>
 <p>If no <code class="inline">reconnection_time</code> time is specified (in millis) it will take the default value, 10 seconds.</p>
-<p><code class="inline">fun</code> is a function that will be executed just after the connection with the node is done.
+<p><code class="inline">fun_after_conn</code> is a function or a a tuple with the module and the function {MyModule, :my_func} 
+that will be executed just after the connection with the node is done.
 It will receive an input, the name of the node.</p>
 
         </section>
