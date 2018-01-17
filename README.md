@@ -16,7 +16,7 @@ Check the [Documentation](https://mendrugory.github.io/nodex).
      [{:nodex, git: "git: "https://github.com/mendrugory/nodex.git"}]
   end
   ```
-# Connection
+## Connection
   ```elixir
   iex> Nodex.connect(%Nodex.Node{app_name: :app, host_address: "my.host"})
   ```
