@@ -13,7 +13,7 @@ Check the [Documentation](https://mendrugory.github.io/nodex).
 
   ```elixir
   def deps do
-     [{:nodex, git: "git: "https://github.com/mendrugory/nodex.git"}]
+     [{:nodex, git: "https://github.com/mendrugory/nodex.git"}]
   end
   ```
 ## Connection
